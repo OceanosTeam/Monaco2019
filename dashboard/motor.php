@@ -21,8 +21,8 @@
 
 $DB_HOST = 'localhost';
 $DB_NAME = 'ocdb';
-$DB_USER = 'admin';
-$DB_PASS = 'a75033207';
+$DB_USER = 'root';
+$DB_PASS = 'YOUR PASSWORD';
 $mysqli = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
 
 if (mysqli_connect_errno()) {
