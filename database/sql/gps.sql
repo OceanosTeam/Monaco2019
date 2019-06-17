@@ -10,3 +10,11 @@ CREATE TABLE IF NOT EXISTS `gps` (
   PRIMARY KEY (`id`)
 );
 
+
+-- Test values
+INSERT INTO `gps` (Latitude, Longitude) VALUES ('43.7366', '7.4284');
+INSERT INTO `gps` (Latitude, Longitude) VALUES ('33.2', '35.22');
+INSERT INTO `gps` (Latitude, Longitude) VALUES ('33.2', '35.22');
+INSERT INTO `gps` (Latitude, Longitude) VALUES ('33.2', '35.22');
+
+

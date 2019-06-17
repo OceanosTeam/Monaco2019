@@ -1,4 +1,0 @@
-Latitude=38.014172
-Longitude=23.645842
-Date=150619
-Time=212741
