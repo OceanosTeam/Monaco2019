@@ -1,0 +1,43 @@
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background: #DBDBDB; 
+    background: linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    
+
+
+    font: 1em/1.4 "lato";
+}
+
+.column_00{
+    background: #757F9A;
+    background: linear-gradient(to right, #D7DDE8, #757F9A);
+    
+}
+
+.column_01{
+    background: #D7DDE8;
+    /*background: linear-gradient(to right, #859398, #283048);*/
+    
+}
+
+.source-connected{
+    color: #45B649;
+}
+
+.source-disconnected{
+    color: #C31432;
+}
+
+.source-pending{
+    color: #F5AF19;
+}
+
+.source-unavailable{
+    color: #BDC3C7;
+}

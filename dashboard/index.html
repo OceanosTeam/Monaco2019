@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Oceanos Dashboard</title>
+        <link rel="stylesheet" type="text/css" href="include/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="include/css/light_boot_dash.css">
+        <link rel="stylesheet" type="text/css" href="include/css/navbar.css">
+        <link rel="stylesheet" type="text/css" href="include/css/dashboards/index.css">
+        <link rel="stylesheet" type="text/css" href="include/fontawesome/css/all.css">
+        <script src="include/jquery.js"></script>
+        <script src="raphael.min.js"></script>
+        <script src="justgage.js"></script>
+        <script src="main.js"></script>
+        <script src="index.js"></script>
+    </head>
+    <body>
+        <div class="button">
+		    <a class="btn-open" href="#"></a>
+		</div>
+		<div class="overlay">
+			<div class="wrap">
+				<ul class="wrap-nav">
+					<li><a href="#">Home</a>
+						<ul>
+							<li><a href="index.html">Trip Information</a></li>
+							<li><a href="#">Designated Speeds</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Map</a>
+						<ul>
+							<li><a href="maps.html">Trip Map</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Motor</a>
+						<ul>
+							<li><a href="motor.html">General</a></li>
+							<li><a href="#">Temperature Graph</a></li>
+							<li><a href="#">About</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Battery</a>
+						<ul>
+							<li><a href="battery.php">General</a></li>
+							<li><a href="#">Temperature Graph</a></li>
+							<li><a href="#">About</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		
+
+        
+        <div class="content">
+             <div class="main-panel">
+                    <div class="content">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card column_01">
+                                        <div class="card-body ">
+                                            <p class="card-category"></p>
+                                            <div id="speed_gauge"></div>
+                                            
+                                        </div>
+                                        <div class="card-footer ">
+                                            <hr>
+                                            <div class="stats">
+                                                <i class="fa fa-history"></i> Updates every 1 second.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card column_01">
+                                        <div class="card-body ">
+                                            <p class="card-category"></p>
+                                            <div id="engine_gauge"></div>
+                                            
+                                        </div>
+                                        <div class="card-footer ">
+                                            <hr>
+                                            <div class="stats">
+                                                <i class="fa fa-history"></i> Updates every 1 second.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

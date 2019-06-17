@@ -1,0 +1,1 @@
+INSERT INTO `gps` (Latitude, Longitude) VALUES ('38.014172', '23.645842');

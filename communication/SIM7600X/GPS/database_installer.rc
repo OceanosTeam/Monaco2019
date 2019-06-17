@@ -1,0 +1,7 @@
+#Configuration settings for Oceanos-Dashboard database installer script
+MYSQLDUMPPATH=/usr/bin/mysqldump
+MYSQLPATH=/usr/bin/mysql
+OCDBHOST=localhost
+OCDB=ocdb
+OCUSER=root
+OCPASS=a75033207
