@@ -7,6 +7,9 @@ struct can_frame frame;
 int speedRPM = 0;
 float current = 0;
 float voltage = 0;
+uint16_t mot_errCode = 0; 
+uint8_t controller_stat = 0;
+uint8_t switch_stat = 0;
 
 unsigned short int throttle = 0; 
 int contTemp = 0;
@@ -16,14 +19,14 @@ int motTemp = 0;
 void setup()
 {
   Serial.begin(9600);
-  Serial.println("Initializing...");
+//  Serial.println("Initializing...");
   
   mcp2515.reset();
   mcp2515.setBitrate(CAN_250KBPS, MCP_8MHZ);
 
   mcp2515.setNormalMode();
 
-  Serial.println("RPM \t I \t V \t Err. Code");
+  Serial.println("RPM, Throttle, I, V, Contr. Temp., Motor Temp., Switch status, Contr. status, Err. Code");
 }
 
 
@@ -54,16 +57,34 @@ void loop()
         current = (frame.data[3]*256 + frame.data[2])/10;
         voltage = (frame.data[5]*256 + frame.data[4])/10;
 
+        mot_errCode = frame.data[6] & ( frame.data[7] << 8 );
+
       } else if (frame.can_id == 2364612357){ // MESSAGE 2
         throttle = frame.data[0];
         contTemp = frame.data[1];
         motTemp = frame.data[2];
+
+        controller_stat = frame.data[4];
+        switch_stat = frame.data[5];
       }
 
-      String delimiter = "\t";
+      String delimiter = ", ";
+
+      char tmp_errCode[16];
+      sprintf(tmp_errCode, "%x", mot_errCode);
+
+      char tmp_cntrStat[8];
+      sprintf(tmp_cntrStat, "%x", controller_stat);
+
+      char tmp_swStat[8];
+      sprintf(tmp_swStat, "%x", switch_stat);
       
-      //String messageDecoded = speedRPM + delimiter + current + delimiter + voltage + delimiter + throttle;
-      String messageDecoded = (String) (10*current);
+      String messageDecoded = speedRPM + delimiter + throttle + delimiter 
+                              + current + delimiter + voltage + delimiter 
+                              + contTemp + delimiter + motTemp + delimiter
+                              + tmp_swStat + delimiter
+                              + tmp_cntrStat + delimiter + tmp_errCode;
+      //String messageDecoded = (String) (10*current);
 
       Serial.println(messageDecoded);
       
