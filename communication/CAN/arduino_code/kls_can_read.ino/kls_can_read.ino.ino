@@ -61,8 +61,8 @@ void loop()
 
       } else if (frame.can_id == 2364612357){ // MESSAGE 2
         throttle = frame.data[0];
-        contTemp = frame.data[1];
-        motTemp = frame.data[2];
+        contTemp = frame.data[1] - 40;
+        motTemp = frame.data[2] - 30;
 
         controller_stat = frame.data[4];
         switch_stat = frame.data[5];
