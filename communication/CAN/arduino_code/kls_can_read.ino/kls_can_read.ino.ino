@@ -18,7 +18,7 @@ int motTemp = 0;
 
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
 //  Serial.println("Initializing...");
   
   mcp2515.reset();
@@ -26,7 +26,7 @@ void setup()
 
   mcp2515.setNormalMode();
 
-  Serial.println("RPM, Throttle, I, V, Contr. Temp., Motor Temp., Switch status, Contr. status, Err. Code");
+//  Serial.println("RPM, Throttle, I, V, Contr. Temp., Motor Temp., Switch status, Contr. status, Err. Code");
 }
 
 
@@ -34,22 +34,10 @@ void setup()
 void loop()
 {
     delay(100);
-//    Serial.println("Atempting to read from CAN bus"); 
+
     int errCode = mcp2515.readMessage(MCP2515::RXB1,&frame);    
     if (errCode == MCP2515::ERROR_OK) {
       
-//        unsigned char* data = (unsigned char*)&frame;
-        //Serial.println(sizeof(frame));
-//        for (int i = 0; i < sizeof(frame); i++)
-//            Serial.print(data[i]);
-//        Serial.println("");
-
-//        Serial.print("ID:  ");
-//        Serial.println(frame.can_id);
-
-
-
-
 
       if (frame.can_id == 2364612101){ // MESSAGE 1
 
@@ -68,36 +56,42 @@ void loop()
         switch_stat = frame.data[5];
       }
 
-      String delimiter = ", ";
 
-      char tmp_errCode[16];
-      sprintf(tmp_errCode, "%x", mot_errCode);
-
-      char tmp_cntrStat[8];
-      sprintf(tmp_cntrStat, "%x", controller_stat);
-
-      char tmp_swStat[8];
-      sprintf(tmp_swStat, "%x", switch_stat);
-      
-      String messageDecoded = speedRPM + delimiter + throttle + delimiter 
-                              + current + delimiter + voltage + delimiter 
-                              + contTemp + delimiter + motTemp + delimiter
-                              + tmp_swStat + delimiter
-                              + tmp_cntrStat + delimiter + tmp_errCode;
-      //String messageDecoded = (String) (10*current);
-
-      Serial.println(messageDecoded);
-      
+      if (Serial.available() > 0) {
+        unsigned char incomingByte = Serial.read();
+//        Serial.write(incomingByte);
+        if (incomingByte == 0x53){
+          uint8_t message[26];
+    
+          memcpy(message+0, &speedRPM, sizeof(speedRPM));
+          memcpy(message+4, &throttle, sizeof(throttle));
+          memcpy(message+6, &current, sizeof(current));
+          memcpy(message+10, &voltage, sizeof(voltage));
+          memcpy(message+14, &contTemp, sizeof(contTemp));
+          memcpy(message+18, &motTemp, sizeof(motTemp));
+          memcpy(message+22, &mot_errCode, sizeof(mot_errCode));
+          memcpy(message+24, &controller_stat, sizeof(controller_stat));
+          memcpy(message+25, &switch_stat, sizeof(switch_stat));
+          
+//          char test[100];
+//          sprintf(test, "%d", speedRPM);
+//
+//          String test1 = test;
+//          Serial.println(test1);
+    
+          Serial.write(message, 26);
+        }
+      }
         
     } else if (errCode == MCP2515::ERROR_FAIL) {
-      Serial.println("ERROR_FAIL");
+//      Serial.println("ERROR_FAIL");
     }else if (errCode == MCP2515::ERROR_ALLTXBUSY) {
-      Serial.println("ERROR_ALLTXBUSY");
+//      Serial.println("ERROR_ALLTXBUSY");
     }else if (errCode == MCP2515::ERROR_FAILINIT) {
-      Serial.println("ERROR_FAILINIT");
+//      Serial.println("ERROR_FAILINIT");
     }else if (errCode == MCP2515::ERROR_FAILTX) {
-      Serial.println("ERROR_FAILTX");
+//      Serial.println("ERROR_FAILTX");
     }else if (errCode == MCP2515::ERROR_NOMSG) {
-      Serial.println("ERROR_NOMSG");
+//      Serial.println("ERROR_NOMSG");
     }
 }
