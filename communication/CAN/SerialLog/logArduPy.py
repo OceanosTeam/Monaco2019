@@ -9,6 +9,19 @@ import sys
 # from collections import namedtuple
 import csv
 
+import mysql.connector as sql
+
+
+
+mydb = mysql.connector.connect(
+host="sql126.main-hosting.eu",
+user="u322154547_root",
+passwd="oceanos_2019",
+database = "motor"
+)
+
+
+
 # configure the serial connections (the parameters differs on the device you are connecting to)
 ser = serial.Serial(
     port='/dev/ttyACM0',
@@ -54,14 +67,15 @@ while 1 :
 
         elems = out.split(',')
 
-        speed = int(elems[0+3])
-        throttle = int(elems[1+3])
-        current = float(elems[2+3])
-        voltage = float(elems[3+3])
-        contTemp = int(elems[4+3])
-        motTemp = int(elems[5+3])
-        motErrCode = int('0x'+elems[6+3].strip(),16)
-        cntrStat = int('0x'+elems[7+3].strip(),16)
-        swStat = int('0x'+elems[8+3].strip(),16)
-        # print(str(speed))
-        # x = float(n) for n in line.split(',')
+        speed = elems[0+3].strip()
+        throttle = elems[1+3].strip()
+        current = elems[2+3].strip()
+        voltage = elems[3+3].strip()
+        contTemp = elems[4+3].strip()
+        motTemp = elems[5+3].strip()
+        motErrCode = elems[6+3].strip()
+        cntrStat = elems[7+3].strip()
+        swStat = elems[8+3].strip()
+
+        mycursor = mydb.cursor()
+        mycursor.execute("INSERT INTO `motor` (speed, throttle, current, voltage, contrTemp, motorTemp, Time) VALUES (%s, %s, %s,%s,%s, %s, %s,%s,%s)")
