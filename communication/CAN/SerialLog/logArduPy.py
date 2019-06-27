@@ -13,11 +13,11 @@ import mysql.connector as sql
 
 
 
-mydb = mysql.connector.connect(
+mydb = sql.connect(
 host="sql126.main-hosting.eu",
 user="u322154547_root",
 passwd="oceanos_2019",
-database = "motor"
+database = "test"
 )
 
 
@@ -78,4 +78,4 @@ while 1 :
         swStat = elems[8+3].strip()
 
         mycursor = mydb.cursor()
-        mycursor.execute("INSERT INTO `motor` (speed, throttle, current, voltage, contrTemp, motorTemp, Time) VALUES (%s, %s, %s,%s,%s, %s, %s,%s,%s)")
+        mycursor.execute("INSERT INTO motor (speed, throttle, current, voltage, contrTemp, motorTemp, motErrCode, cntrStat, swStat) VALUES ('"+speed+"','"+throttle+"','"+current+"','"+voltage+"','"+contTemp+"','"+motTemp+"','"+motErrCode+"','"+cntrStat+"','"+swStat+")")
