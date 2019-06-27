@@ -1,4 +1,4 @@
-/**
+	/**
 *  @filename   :   GPS.cpp
 *  @brief      :   Implements for sim7600c 4g hat raspberry pi demo
 *  @author     :   Kaloha from Waveshare
@@ -28,6 +28,7 @@
 #include "../sim7x00.h"
 #include "GPSloc.h"
 #include <string>
+#include <iostream>
 
 // Pin definition
 int POWERKEY = 6;
@@ -36,7 +37,8 @@ int8_t answer;
 
 void reset() {
 	std::cout<<"RESETTING SIM7600 MODULE"<<std::endl;
-	sim7600.sendATcommand("AT+CRESET", "OK", 5000);
+	sim7600.sendATcommand("AT+CFUN=6", "OK", 5000);
+	delay(15000);
 }
 
 void setup() {	
@@ -70,9 +72,9 @@ void loop() {
 }
 
 int main() {
+	reset();
 	setup();
 	int signal_counter = 1;
-	system("./writer.sh 1");
 	while (1) {
 		std::cout << "" << std::endl;
 		std::cout << std::string(12, '*')+"<"+std::to_string(signal_counter)+">"+std::string(12, '*') << std::endl;
@@ -91,10 +93,9 @@ int main() {
 		}
 		std::cout << std::string(12, '*')+"<"+std::to_string(signal_counter)+">"+std::string(12, '*') << std::endl;
 		std::cout << "" << std::endl;
-		delay(10000);
+		delay(2000);
 		signal_counter++;
 	}
 	sim7600.sendATcommand("AT+CGPS=0","OK:", 3000);
-	//reset();
 	return (0);
 }

@@ -3,10 +3,9 @@
 
 class GPSloc{
 public:
-    float Lat,Log;
-    
-    GPSloc();
-    GPSloc(float lat,float log);
+	 float Lat,Log,Speed;
+	GPSloc();
+	GPSloc(float lat,float log,float speed);
 	~GPSloc();
 };
 

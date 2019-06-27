@@ -217,8 +217,8 @@ GPSloc Sim7x00::GPSPositioning(){
     int i = 0;
     char RecMessage[200];
     
-    char LatDD[2],LatMM[9],LogDD[3],LogMM[9],DdMmYy[6],UTCTime[6];
-    float Lat,Log;
+    char LatDD[2],LatMM[9],LogDD[3],LogMM[9],DdMmYy[6],UTCTime[6],SpeedDD[1],SpeedMM[1];
+    float Lat,Log,Speed;
     
     
     //printf("Start GPS session...\n");
@@ -249,7 +249,7 @@ GPSloc Sim7x00::GPSPositioning(){
             }while(answer == 0);    // Waits for the answer with time out
             
             RecMessage[i] = '\0';
-            //printf("%s\n",RecMessage); 
+            printf("%s\n",RecMessage); 
 
 
             if (strstr(RecMessage, ",,,,,,,,") != NULL) 
@@ -295,6 +295,14 @@ GPSloc Sim7x00::GPSPositioning(){
     else
         return GPSloc();
 
+    strncpy(SpeedDD,RecMessage+51,1);
+    strncpy(SpeedMM,RecMessage+53,1);
+    Speed = atoi(SpeedDD) + (atof(SpeedMM)/10);
+    if(RecMessage[51] >= '0')
+        printf("~sim> Speed is %f knots.\n",Speed);
+    else
+        return GPSloc();
+
     strncpy(DdMmYy,RecMessage+29,6);
     //end string buffer with \0
     DdMmYy[6] = '\0';
@@ -306,7 +314,7 @@ GPSloc Sim7x00::GPSPositioning(){
     printf("~sim> UTC time is %s\n",UTCTime);
     
     //sendATcommand("AT+CGPS=0","OK:", 3000);
-    return GPSloc(Lat,Log);
+    return GPSloc(Lat,Log,Speed);
 }
 
 /**************************Other functions**************************/
