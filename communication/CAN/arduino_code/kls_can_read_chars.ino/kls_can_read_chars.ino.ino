@@ -45,9 +45,10 @@ void setup()
 
 void loop()
 {
-//    delay(100);
+    delay(100);
 
     int errCode = mcp2515.readMessage(MCP2515::RXB1,&frame);    
+    delay(10);
     if (errCode == MCP2515::ERROR_OK) {
       
 
@@ -89,24 +90,23 @@ void loop()
         unsigned char incomingByte = Serial.read();
 //        Serial.write(incomingByte);
         if (incomingByte == 0x53){
-          unsigned char message[26];
+           String message;
 
+           String delim = ", ";
 
+           char tmp_motErr[4];
+           sprintf(tmp_motErr, "%x", mot_errCode);
+           char tmp_cntrStat[4];
+           sprintf(tmp_cntrStat, "%x", controller_stat);
+           char tmp_swStat[4];
+           sprintf(tmp_swStat, "%x", switch_stat);
 
-
+           message = speedRPM + delim + throttle + delim
+                     + current + delim + voltage + delim
+                     + contTemp + delim + motTemp + delim
+                     + tmp_motErr + delim + tmp_cntrStat + delim + tmp_swStat;
     
-          memcpy(message+0, &speedRPM, sizeof(speedRPM));
-          memcpy(message+4, &throttle, sizeof(throttle));
-          memcpy(message+6, &current, sizeof(current));
-          memcpy(message+10, &voltage, sizeof(voltage));
-          memcpy(message+14, &contTemp, sizeof(contTemp));
-          memcpy(message+18, &motTemp, sizeof(motTemp));
-          memcpy(message+22, &mot_errCode, sizeof(mot_errCode));
-          memcpy(message+24, &controller_stat, sizeof(controller_stat));
-          memcpy(message+25, &switch_stat, sizeof(switch_stat));
-          
-    
-          Serial.write(message, 26);
+          Serial.println(message);
         }
     }
 }
