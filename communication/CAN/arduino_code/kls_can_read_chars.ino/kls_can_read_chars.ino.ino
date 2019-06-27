@@ -47,42 +47,42 @@ void loop()
 {
     delay(100);
 
-    int errCode = mcp2515.readMessage(MCP2515::RXB1,&frame);    
-    delay(10);
-    if (errCode == MCP2515::ERROR_OK) {
-      
-
-      if (frame.can_id == 2364612101){ // MESSAGE 1
-
-        speedRPM = frame.data[1]*256 + frame.data[0];
-        current = (frame.data[3]*256 + frame.data[2])/10;
-        voltage = (frame.data[5]*256 + frame.data[4])/10;
-
-        mot_errCode = frame.data[6] & ( frame.data[7] << 8 );
-
-      } else if (frame.can_id == 2364612357){ // MESSAGE 2
-        throttle = frame.data[0];
-        contTemp = frame.data[1] - 40;
-        motTemp = frame.data[2] - 30;
-
-        controller_stat = frame.data[4];
-        switch_stat = frame.data[5];
-      }
-
-
-
-        
-    } else if (errCode == MCP2515::ERROR_FAIL) {
-//      Serial.println("ERROR_FAIL");
-    }else if (errCode == MCP2515::ERROR_ALLTXBUSY) {
-//      Serial.println("ERROR_ALLTXBUSY");
-    }else if (errCode == MCP2515::ERROR_FAILINIT) {
-//      Serial.println("ERROR_FAILINIT");
-    }else if (errCode == MCP2515::ERROR_FAILTX) {
-//      Serial.println("ERROR_FAILTX");
-    }else if (errCode == MCP2515::ERROR_NOMSG) {
-//      Serial.println("ERROR_NOMSG");
-    }
+//    int errCode = mcp2515.readMessage(MCP2515::RXB1,&frame);    
+//    delay(10);
+//    if (errCode == MCP2515::ERROR_OK) {
+//      
+//
+//      if (frame.can_id == 2364612101){ // MESSAGE 1
+//
+//        speedRPM = frame.data[1]*256 + frame.data[0];
+//        current = (frame.data[3]*256 + frame.data[2])/10;
+//        voltage = (frame.data[5]*256 + frame.data[4])/10;
+//
+//        mot_errCode = frame.data[6] & ( frame.data[7] << 8 );
+//
+//      } else if (frame.can_id == 2364612357){ // MESSAGE 2
+//        throttle = frame.data[0];
+//        contTemp = frame.data[1] - 40;
+//        motTemp = frame.data[2] - 30;
+//
+//        controller_stat = frame.data[4];
+//        switch_stat = frame.data[5];
+//      }
+//
+//
+//
+//        
+//    } else if (errCode == MCP2515::ERROR_FAIL) {
+////      Serial.println("ERROR_FAIL");
+//    }else if (errCode == MCP2515::ERROR_ALLTXBUSY) {
+////      Serial.println("ERROR_ALLTXBUSY");
+//    }else if (errCode == MCP2515::ERROR_FAILINIT) {
+////      Serial.println("ERROR_FAILINIT");
+//    }else if (errCode == MCP2515::ERROR_FAILTX) {
+////      Serial.println("ERROR_FAILTX");
+//    }else if (errCode == MCP2515::ERROR_NOMSG) {
+////      Serial.println("ERROR_NOMSG");
+//    }
 
 
 
