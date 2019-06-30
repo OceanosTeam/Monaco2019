@@ -32,19 +32,20 @@ if (mysqli_connect_errno()) {
 
 
 $result = $mysqli->query('SELECT * FROM motor ORDER By id DESC LIMIT 1;');
-$lol = (string) rand(-10,10);
 if ($result->num_rows > 0) {
  	$row = $result->fetch_assoc();
     $table = [
-			'VoltageIn' => $row['VoltageIn'],
-			'RPM'=> $row['RPM']+$lol,
-			'PowerIn' => $row['PowerIn'],
-			'Temperature' => $row['Temperature'],
-
-			'CurrentIn' => $row['CurrentInput'],
- 			/*'Heartbeat' => $row['Heartbeat'],*/
-
-			'time'=> $row['time'],
+			'speed' => $row['speed'],
+			'throttle'=> $row['throttle'],
+			'current' => $row['current'],
+			'voltage' => $row['voltage'],
+			'contTemp' => $row['contTemp'],
+ 			'motorTemp' => $row['motorTemp'],
+			'motErrCode'=> $row['motErrCode'],
+			'cntStat' => $row['cntStat'],
+			'swStat' => $row[swStat'],
+			'Time' => $row['Time'],
+			
 			'id'=> $row['id']];
 }
 else {
