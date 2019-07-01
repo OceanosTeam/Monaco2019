@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="crossorigin=""/>
         <script type="text/javascript" src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="crossorigin=""></script>
 		<script type="text/javascript" src="../include/jquery.js"></script>
-		<script type="text/javascript" src="../include/js/Chart.js></script>
+		<script type="text/javascript" src="../include/js/Chart.js"></script>
     </head>
     
     <body>
@@ -55,13 +55,12 @@
         <div id="overlay-map" class="overlay">
             <div id="mapid" style="width: 100vw; height: 100vh; z-index:1;"></div>
         </div>
-
-
-	<script type="text/javascript">
-		setInterval(function() {
-			$("#date").text("Date from: " + Motor["Time"]);
-		}, 1000);
-	</script>
+        <script type="text/javascript" src="motor.js"></script>
+        <script type="text/javascript">
+            setInterval(function() {
+                $("#date").text("Date from: " + Motor["Time"]);
+            }, 1000);
+        </script>
         <script type="text/javascript" src="buttons.js"></script>
     </body>
 </html>
