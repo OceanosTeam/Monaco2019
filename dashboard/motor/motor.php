@@ -20,16 +20,15 @@
 */
 
 $DB_HOST = 'localhost';
-$DB_NAME = 'ocdb';
-$DB_USER = 'root';
-$DB_PASS = 'YOUR PASSWORD';
+$DB_NAME = 'test';
+$DB_USER = 'u322154547_root';
+$DB_PASS = 'a75033207b6fr!r935';
 $mysqli = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
 
 if (mysqli_connect_errno()) {
 	printf("Connect failed: %s\n", mysqli_connect_error());
 	exit();
 }
-
 
 $result = $mysqli->query('SELECT * FROM motor ORDER By id DESC LIMIT 1;');
 if ($result->num_rows > 0) {
@@ -43,7 +42,7 @@ if ($result->num_rows > 0) {
  			'motorTemp' => $row['motorTemp'],
 			'motErrCode'=> $row['motErrCode'],
 			'cntStat' => $row['cntStat'],
-			'swStat' => $row[swStat'],
+			'swStat' => $row['swStat'],
 			'Time' => $row['Time'],
 			
 			'id'=> $row['id']];
