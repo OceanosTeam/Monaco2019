@@ -32,7 +32,7 @@ void setup()
 
   speedRPM = 1;
   current = 2;
-  voltage = 3;
+  voltage = 57;
   mot_errCode = 4;
   controller_stat = 5;
   switch_stat = 6;

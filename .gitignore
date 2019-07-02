@@ -27,7 +27,7 @@ $RECYCLE.BIN/
 *.pyc
 
 # CSV Files
-*.csv
+can_log*.csv
 
 #Ignore all database registers
 *.rc

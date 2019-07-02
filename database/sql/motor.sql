@@ -12,13 +12,8 @@ CREATE TABLE IF NOT EXISTS `motor` (
   `motErrCode` VARCHAR(8) DEFAULT '0',
   `cntrStat` VARCHAR(8) DEFAULT '0',
   `swStat` VARCHAR(8) DEFAULT '0',
+  `energy` DECIMAL(4,2) DEFAULT '0',
   `Time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `serverSideName` VARCHAR(15) DEFAULT 'motor',
   PRIMARY KEY (`id`)
 );
-
--- Test values
-INSERT INTO `motor` (Temperature, VoltageIn, RPM, PowerIn, CurrentIn) VALUES ('32', '35.22', '1500', '1200', '1');
-INSERT INTO `motor` (Temperature, VoltageIn, RPM, PowerIn, CurrentIn) VALUES ('33.2', '36.35', '1750', '1200', '1.2');
-INSERT INTO `motor` (Temperature, VoltageIn, RPM, PowerIn, CurrentIn) VALUES ('34.6', '38.27', '1700', '1200', '1.18');
-INSERT INTO `motor` (Temperature, VoltageIn, RPM, PowerIn, CurrentIn) VALUES ('32.3', '33.87', '1575', '1200', '1.1');

@@ -1,4 +1,4 @@
-#!/bin/python
+#!/bin/python3
 
 import time
 import serial
@@ -7,11 +7,17 @@ from datetime import datetime
 import struct
 import sys
 # from collections import namedtuple
-import csv
-
+import numpy as np
 import mysql.connector as sql
+from scipy import interpolate
 
 
+# battFile = open('oceanos_cell_discharge_capacity_14s.csv', mode='r')
+# csv_reader = csv.DictReader(battFile)
+Vdata = np.genfromtxt('oceanos_cell_discharge_capacity_14s.csv', dtype=float, delimiter=',', names=True)
+vx = Vdata['voltage']
+vy = Vdata['Percentage']
+fvolt = interpolate.interp1d(vx, vy)
 
 mydb = sql.connect(
 host="sql126.main-hosting.eu",
@@ -47,19 +53,13 @@ f.write(date_time + '\n')
 f.write('date, time, microseconds, speed, throttle, current, voltage, contTemp, motTemp, motErrCode, cntrStat, swStat\n')
 f.close()
 
-# input=1
+
 while 1 :
         ser.write(b'S')
-        # time.sleep(0.1)
-
-        # arduinoInput = ser.read(26)
-        # speed, throttle, current, voltage, contTemp, motTemp, motErrCode, cntrStat, swStat = struct.unpack("<iHffiiHcc", arduinoInput)
-        # out = str(speed) + ', ' + str(throttle) + ', ' + str(current) + ', ' + str(voltage) + ', ' + str(contTemp) + ', ' + str(motTemp) + ', ' + str(motErrCode) + ', ' + str(cntrStat) + ', ' + str(swStat) + '\n'
 
         arduinoInput = ser.readline()
         out = datetime.now().strftime("%d/%m/%Y, %H:%M:%S, %f") + ', ' + str(arduinoInput,'ASCII')
 
-        print(out)
 
         f= open(filename,"a+")
         f.write("%s" % out)
@@ -77,6 +77,13 @@ while 1 :
         cntrStat = elems[7+3].strip()
         swStat = elems[8+3].strip()
 
+        # print(Vdata['Percentage'])
+        energy = fvolt(float(voltage))
+
+        # print(energy)
+        out =  out + ', ' + str(energy)
+        print(out)
+
         mycursor = mydb.cursor()
-        mycursor.execute("INSERT INTO motor (speed, throttle, current, voltage, contrTemp, motorTemp, motErrCode, cntrStat, swStat) VALUES ('"+speed+"','"+throttle+"','"+current+"','"+voltage+"','"+contTemp+"','"+motTemp+"','"+motErrCode+"','"+cntrStat+"','"+swStat+"')")
+        mycursor.execute("INSERT INTO motor (speed, throttle, current, voltage, contrTemp, motorTemp, motErrCode, cntrStat, swStat, energy) VALUES ('"+speed+"','"+throttle+"','"+current+"','"+voltage+"','"+contTemp+"','"+motTemp+"','"+motErrCode+"','"+cntrStat+"','"+swStat+"','"+energy+"')")
         mydb.commit()
