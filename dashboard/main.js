@@ -17,11 +17,11 @@ function rgbToHex(rgb_color) {
 }
 $(document).ready(function(){
     var presets = window.chartColors;
-    var speed_gauge;
-    speed_gauge = new JustGage({
-        id: "speed_gauge",
-        title: "Ship Speed",
-        label: "KN",
+    var motor_voltage;
+    motor_voltage = new JustGage({
+        id: "motor_voltage",
+        title: "Motor Voltage",
+        label: "V",
         titleFontColor: presets.black,
         valueFontColor : presets.black,
         gaugeColor : presets.white,
@@ -37,15 +37,15 @@ $(document).ready(function(){
         pointer: true,
         value: 0,
         min: 0,
-        max: 10,
+        max: 60,
         gaugeWidthScale: 0.3,
         counter: true,
         hideInnerShadow: true,
     });
-    var engine_gauge;
-    engine_gauge= new JustGage({
-        id: "engine_gauge",
-        title: "Engine RPM",
+    var motor_speed;
+    motor_speed= new JustGage({
+        id: "motor_speed",
+        title: "Motor RPM",
         label: "RPM",
         titleFontColor: presets.black,
         valueFontColor : presets.black,
@@ -61,50 +61,50 @@ $(document).ready(function(){
         pointer: true,
         value: 0,
         min: 0,
-        max: 2200,
+        max: 4000,
         gaugeWidthScale: 0.63,
         counter: true,
         hideInnerShadow: true,
     });
 
-    var g3;
-    g3 = new JustGage({
-        id: "g3",
-        title: "Engine Temp",
-        label: "K",
+    var motor_temp;
+    motor_temp = new JustGage({
+        id: "motor_temp",
+        title: "Motor Temp",
+        label: "C",
         titleFontColor: "white",
         titleMinFontSize: 20,
         pointer: true,
         value: 0,
         min: 0,
-        max: 2200,
+        max: 100,
         gaugeWidthScale: 0.3,
         counter: true,
         hideInnerShadow: true,
     });
 
-    var g4;
-    g4 = new JustGage({
-        id: "g4",
-        title: "Battery Temp",
-        label: "K",
+    var motor_current;
+    motor_current = new JustGage({
+        id: "motor_current",
+        title: "Motor Current",
+        label: "A",
         titleFontColor: "white",
         titleMinFontSize: 20,
         pointer: true,
         value: 0,
         min: 0,
-        max: 2200,
+        max: 150,
         gaugeWidthScale: 0.3,
         counter: true,
         hideInnerShadow: true,
     });
     
     setInterval(function() {
-        speed_gauge.refresh((Math.random() * (8.8 - 7.8) + 7.8).toFixed(1));
-        engine_gauge.refresh(getRandomInt(1700, 1800));
+        motor_speed.refresh((Math.random() * (8.8 - 7.8) + 7.8).toFixed(1));
+        motor_voltage.refresh(getRandomInt(10, 15));
 
-        //g3.refresh(getRandomInt(1700, 1800));
-        //g4.refresh(getRandomInt(1700, 1800));
+        motor_current.refresh(getRandomInt(20, 30));
+        motor_temp.refresh(getRandomInt(30, 32));
         
       }, 1000);
 });

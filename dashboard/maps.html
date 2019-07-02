@@ -9,114 +9,51 @@
         <link rel="stylesheet" type="text/css" href="include/css/dashboards/index.css">
         <link rel="stylesheet" type="text/css" href="include/fontawesome/css/all.css">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="crossorigin=""/>
-        <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="crossorigin=""></script>
-        <script src="include/jquery.js"></script>
-        <script src="index.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="crossorigin=""></script>
+        <script type="text/javascript" src="include/jquery.js"></script>
     </head>
     <body>
-        <div class="button">
-            <a class="btn-open" href="#"></a>
+        <div id="nav-btn" class="button">
+            <a class="btn-open-nav" href="#"></a>
         </div>
-        <div class="overlay">
+        <div id="map-btn" class="button">
+                <a class="btn-open-map" href="#"></a>
+            </div>
+        <div id="overlay-nav" class="overlay">
             <div class="wrap">
                 <ul class="wrap-nav">
-                    <li><a href="#">Map</a>
-                    <ul>
-                        <li><a href="maps.html">Trip Information</a></li>
-                        <li><a href="#">Google Map</a></li>
-                        <li><a href="#">Designated Speeds</a></li>
-                    </ul>
+                    <li><a href="#">Home</a>
+                        <ul>
+                            <li><a href="index.html">Trip Information</a></li>
+                            <li><a href="#">Designated Speeds</a></li>
+                        </ul>
                     </li>
-                    <li><a href="#">Motor<?php echo "HAHA" ?></a>
-                    <ul>
-                        <li><a href="motor.html">General</a></li>
-                        <li><a href="#">Temperature Graph</a></li>
-                        <li><a href="#">About</a></li>
-                    </ul>
+                    <li><a href="#">Map</a>
+                        <ul>
+                            <li><a href="maps.html">Trip Map</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Motor</a>
+                        <ul>
+                            <li><a href="motor.html">General</a></li>
+                            <li><a href="#">Temperature Graph</a></li>
+                            <li><a href="#">About</a></li>
+                        </ul>
                     </li>
                     <li><a href="#">Battery</a>
-                    <ul>
-                        <li><a href="battery.php">General</a></li>
-                        <li><a href="#">Temperature Graph</a></li>
-                        <li><a href="#">About</a></li>
-                    </ul>
+                        <ul>
+                            <li><a href="battery.html">General</a></li>
+                            <li><a href="#">Temperature Graph</a></li>
+                            <li><a href="#">About</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
         </div>
-        
-        <div id="mapid" style="width: 100vw; height: 100vh; z-index:1;"></div>
-<script>
-    var mymap;
-    console.log(screen.width);
-    if (screen.width >= 1440 && screen.width <= 1920) {
-        mymap = L.map('mapid').setView([43.745, 7.525], 13);
-    }
-    else if (screen.width >= 480 && screen.width <= 1440)  {
-        mymap = L.map('mapid').setView([43.745, 7.525], 12);
-    }
-    
-	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-		maxZoom: 18,
-		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-		id: 'mapbox.streets'
-	}).addTo(mymap);
-    
-    
-	L.marker([43.7366, 7.4284]).addTo(mymap)
-		.bindPopup("<b>Start-Monaco</b><br />I am a popup.").openPopup();
-        
-    L.marker([43.7888, 7.5991]).addTo(mymap)
-		.bindPopup("<b>Finish-Ventimiglia</b><br />I am a popup.").openPopup();
-    var latlngs = [
-    [43.7366, 7.4284],
-    [43.7475, 7.4889],
-    [43.7888, 7.5991]
-    ];
-    var polyline = L.polyline(latlngs, {color: 'red'}).addTo(mymap);
-    // zoom the map to the polyline
-    mymap.fitBounds(polyline.getBounds());
-    // create the green pathgon
-    var purple_latlngs = [[43.7371, 7.4336],[43.7466, 7.4871],[43.7491, 7.4933],[43.7861, 7.5920],[43.7867, 7.5907],[43.7495, 7.4926],[43.7471, 7.4868],[43.7380, 7.4333]];
-    var purple_polygon = L.polygon(purple_latlngs, {color: '#AB14FF'}).addTo(mymap);
-    mymap.fitBounds(purple_polygon.getBounds());
-    // create the yellow-upper pathgon
-    var yellow_u_latlngs = [[43.7380,7.4333],[43.7471,7.4868],[43.7495,7.4926],[43.7867,7.5907],[43.7872,7.5898],[43.7497,7.4919],[43.7475,7.4865],[43.7387,7.4330]];
-    var yellow_u_polygon = L.polygon(yellow_u_latlngs, {color: '#FFDF17'}).addTo(mymap);
-    mymap.fitBounds(yellow_u_polygon.getBounds());
-    // create the yellow-lower pathgon
-    var yellow_l_latlngs = [[43.7371,7.4336],[43.7466,7.4871],[43.7491,7.4933],[43.7861,7.5920],[43.7856,7.5927],[43.7488,7.4939],[43.7461,7.4874],[43.7362,7.4339]];
-    var yellow_l_polygon = L.polygon(yellow_l_latlngs, {color: '#FFDF17'}).addTo(mymap);
-    mymap.fitBounds(yellow_l_polygon.getBounds());
-
-    /*
-	L.circle([51.508, -0.11], 500, {
-		color: 'red',
-		fillColor: '#f03',
-		fillOpacity: 0.5
-	}).addTo(mymap).bindPopup("I am a circle.");
-
-	L.polygon([
-		[51.509, -0.08],
-		[51.503, -0.06],
-		[51.51, -0.047]
-	]).addTo(mymap).bindPopup("I am a polygon.");
-    */
-
-	var popup = L.popup();
-
-	function onMapClick(e) {
-		popup
-			.setLatLng(e.latlng)
-			.setContent("You clicked the map at " + e.latlng.toString())
-			.openOn(mymap);
-	}
-
-	mymap.on('click', onMapClick);
-
-</script>
-        
+        <div id="overlay-map" class="overlay">
+            <div id="mapid" style="width: 100vw; height: 100vh; z-index:1000;"></div>
+        </div>
+        <p>CONTENT</p>
+        <script type="text/javascript" src="buttons.js"></script>    
     </body>
 </html>

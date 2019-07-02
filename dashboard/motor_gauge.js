@@ -20,8 +20,8 @@ $(document).ready(function(){
     var speed_gauge;
     speed_gauge = new JustGage({
         id: "speed_gauge",
-        title: "Ship Speed",
-        label: "KN",
+        title: "Engine Speed",
+        label: "RPM",
         titleFontColor: presets.black,
         valueFontColor : presets.black,
         gaugeColor : presets.white,
@@ -37,7 +37,7 @@ $(document).ready(function(){
         pointer: true,
         value: 0,
         min: 0,
-        max: 2000,
+        max: 4000,
         gaugeWidthScale: 0.3,
         counter: true,
         hideInnerShadow: true,

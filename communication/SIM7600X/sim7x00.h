@@ -27,6 +27,8 @@
 
 #ifndef sim7x00_h
 #define sim7x00_h
+#include <iostream>
+#include <string>
 #include "GPS/GPSloc.h"
 /* Sim7x00 Class */
 class Sim7x00 {

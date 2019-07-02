@@ -1,0 +1,19 @@
+footer{
+    text-align:center;
+    border-top: 10px solid gold;
+    background: #00B4DB;
+    background: -webkit-linear-gradient(to left, #0083B0, #00B4DB);
+    background: linear-gradient(to left, #0083B0, #00B4DB);    
+}
+
+.sponsor{
+    display: inline-block;
+    max-width:25%;
+    max-height:25%;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    .sponsor{
+        max-width:35%;
+        max-height:35%;
+    }
+}

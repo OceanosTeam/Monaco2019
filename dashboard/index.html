@@ -8,62 +8,66 @@
         <link rel="stylesheet" type="text/css" href="include/css/navbar.css">
         <link rel="stylesheet" type="text/css" href="include/css/dashboards/index.css">
         <link rel="stylesheet" type="text/css" href="include/fontawesome/css/all.css">
-        <script src="include/jquery.js"></script>
-        <script src="raphael.min.js"></script>
-        <script src="justgage.js"></script>
-        <script src="main.js"></script>
-        <script src="index.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="crossorigin=""/>
+        <link rel="stylesheet" type="text/css" href="include/css/footer.css">
+        <script type="text/javascript" src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="crossorigin=""></script>
+        <script type="text/javascript" src="include/jquery.js"></script>
+        <script type="text/javascript" src="include/raphael.min.js"></script>
+        <script type="text/javascript" src="include/justgage.js"></script>
+        <script type="text/javascript" src="main.js"></script>
     </head>
     <body>
-        <div class="button">
-		    <a class="btn-open" href="#"></a>
-		</div>
-		<div class="overlay">
-			<div class="wrap">
-				<ul class="wrap-nav">
-					<li><a href="#">Home</a>
-						<ul>
-							<li><a href="index.html">Trip Information</a></li>
-							<li><a href="#">Designated Speeds</a></li>
-						</ul>
-					</li>
-					<li><a href="#">Map</a>
-						<ul>
-							<li><a href="maps.html">Trip Map</a></li>
-						</ul>
-					</li>
-					<li><a href="#">Motor</a>
-						<ul>
-							<li><a href="motor.html">General</a></li>
-							<li><a href="#">Temperature Graph</a></li>
-							<li><a href="#">About</a></li>
-						</ul>
-					</li>
-					<li><a href="#">Battery</a>
-						<ul>
-							<li><a href="battery.php">General</a></li>
-							<li><a href="#">Temperature Graph</a></li>
-							<li><a href="#">About</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-		</div>
-
-		
-
-        
+        <div id="nav-btn" class="button">
+            <a class="btn-open-nav" href="#"></a>
+        </div>
+        <div id="map-btn" class="button">
+                <a class="btn-open-map" href="#"></a>
+            </div>
+        <div id="overlay-nav" class="overlay">
+            <div class="wrap">
+                <img class="sponsor" src="include/assets/oceanos logo-01.png">
+                <ul class="wrap-nav">
+                    <li><a href="#"><img src="https://img.icons8.com/dusk/64/000000/info.png"></a>
+                        <ul>
+                            <li><a href="/">Trip Information</a></li>
+                            <li><a href="#">Designated Speeds</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><img src="https://img.icons8.com/dusk/64/000000/indoor-navigation.png"></a>
+                        <ul>
+                            <li><a href="maps">Trip Map</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><img src="https://img.icons8.com/dusk/64/000000/engine.png"></a>
+                        <ul>
+                            <li><a href="motor/general">General</a></li>
+                            <li><a href="motor/temperature">Temperature Graph</a></li>
+                            <li><a href="motor/about">About</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><img src="https://img.icons8.com/dusk/64/000000/car-battery.png"></a>
+                        <ul>
+                            <li><a href="battery/general">General</a></li>
+                            <li><a href="battery/temperature">Temperature Graph</a></li>
+                            <li><a href="battery/about">About</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="overlay-map" class="overlay">
+            <div id="mapid" style="width: 100vw; height: 100vh; z-index:1;"></div>
+        </div>
         <div class="content">
              <div class="main-panel">
                     <div class="content">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="card column_01">
                                         <div class="card-body ">
                                             <p class="card-category"></p>
-                                            <div id="speed_gauge"></div>
-                                            
+                                            <div id="motor_speed"></div>
                                         </div>
                                         <div class="card-footer ">
                                             <hr>
@@ -73,12 +77,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="card column_01">
                                         <div class="card-body ">
                                             <p class="card-category"></p>
-                                            <div id="engine_gauge"></div>
-                                            
+                                            <div id="motor_temp"></div>
                                         </div>
                                         <div class="card-footer ">
                                             <hr>
@@ -89,11 +92,45 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row"></div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="card column_01">
+                                        <div class="card-body ">
+                                            <p class="card-category"></p>
+                                            <div id="motor_voltage"></div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <hr>
+                                            <div class="stats">
+                                                <i class="fa fa-history"></i> Updates every 1 second.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="card column_01">
+                                        <div class="card-body">
+                                            <p class="card-category"></p>
+                                            <div id="motor_current"></div>
+                                        </div>
+                                        <div class="card-footer ">
+                                            <hr>
+                                            <div class="stats">
+                                                <i class="fa fa-history"></i> Updates every 1 second.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script type="text/javascript" src="include/buttons.js"></script>
     </body>
+    <footer>
+        <img class="sponsor" src="include/assets/stelios.png">
+        <img class="sponsor" src="include/assets/beta.png">
+    </footer>
 </html>

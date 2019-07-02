@@ -172,3 +172,4 @@ createdatabase
 MYDB="$MYSQLPATH -h $OCDBHOST -u $OCUSER --password=$OCPASS -D $OCDB"
 ocdbackup
 askdatabase
+cp $CONF ../../communication/SIM7600X/GPS
