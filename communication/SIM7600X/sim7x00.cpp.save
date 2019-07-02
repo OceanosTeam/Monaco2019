@@ -216,9 +216,8 @@ GPSloc Sim7x00::GPSPositioning(){
     bool RecNull = true;
     int i = 0;
     char RecMessage[200];
-    //char LatDD[2],LatMM[9],LogDD[3],LogMM[9],DdMmYy[6],UTCTime[6],SpeedDD[2],SpeedMM[2];
     
-    string LatDD,LatMM,LogDD,LogMM,DdMmYy,UTCTime,SpeedDD;
+    char LatDD[2],LatMM[9],LogDD[3],LogMM[9],DdMmYy[6],UTCTime[6],SpeedDD[2],SpeedMM[2];
     float Lat,Log,Speed;
     
     
@@ -250,7 +249,7 @@ GPSloc Sim7x00::GPSPositioning(){
             }while(answer == 0);    // Waits for the answer with time out
             
             RecMessage[i] = '\0';
-            //printf("%s\n",RecMessage); 
+            printf("%s\n",RecMessage); 
 
 
             if (strstr(RecMessage, ",,,,,,,,") != NULL) 
@@ -275,58 +274,35 @@ GPSloc Sim7x00::GPSPositioning(){
         }
         //delay(1500);
     }
-    string message = RecMessage;
-    string delimiter = ",";
-    string token;
-    int counter = 0;
-    auto start = 0U;
-    auto end = message.find(delimiter);
-    while (end != string::npos){
-	token = message.substr(start,end-start);
-	if (counter==0){
-	    LatDD = token.substr(0,2);
-	    LatMM = token.substr(2,11);
-	}
-	if (counter==2){
-	    LogDD = token.substr(0,3);
-	    LogMM = token.substr(3,12);
-	}
-	if (counter==7){
-	    SpeedDD = token;
-	}
-	start = end + delimiter.length();
-	end = message.find(delimiter, start);
-	counter++;
-    }
-    cout<< message.substr(start,end);
     
-    //strncpy(LatDD,RecMessage,2);
-    //strncpy(LatMM,RecMessage+2,9);
+    strncpy(LatDD,RecMessage,2);
+    strncpy(LatMM,RecMessage+2,9);
     //The C library function int atoi(const char *str) 
     //converts the string argument str to an int.
     //The C library function double atof(const char *str) 
     //converts the string argument str to a float (type double).
-    Lat = atoi(LatDD.c_str()) + (atof(LatMM.c_str())/60);
+    Lat = atoi(LatDD) + (atof(LatMM)/60);
     if(RecMessage[12] == 'N' || RecMessage[12] == 'S')
-	cout << "~sim> Latitude is " << Lat << RecMessage[12] << endl;
+        printf("~sim> Latitude is %f %c\n",Lat,RecMessage[12]);
     else
         return GPSloc();
-    
-    //strncpy(LogDD,RecMessage+14,3);
-    //strncpy(LogMM,RecMessage+17,9);
-    Log = atoi(LogDD.c_str()) + (atof(LogMM.c_str())/60);
+
+    strncpy(LogDD,RecMessage+14,3);
+    strncpy(LogMM,RecMessage+17,9);
+    Log = atoi(LogDD) + (atof(LogMM)/60);
     if(RecMessage[27] == 'E' || RecMessage[27] == 'W')
-	cout << "~sim> Longitude is " << Log << RecMessage[27] << endl;
+        printf("~sim> Longitude is %f %c\n",Log,RecMessage[27]);
     else
         return GPSloc();
-    
-    Speed = atof(SpeedDD.c_str());
-    cout<<Speed<<endl;
-    if(RecMessage[50] >= '0')
-	cout << "~sim> Speed is " << Speed << " knots" << endl;
+
+    strncpy(SpeedDD,RecMessage+51,1);
+    strncpy(SpeedMM,RecMessage+53,1);
+    Speed = atoi(SpeedDD) + (atof(SpeedMM)/10);
+    if(RecMessage[51] >= '0')
+        printf("~sim> Speed is %f knots.\n",Speed);
     else
         return GPSloc();
-    /*
+
     strncpy(DdMmYy,RecMessage+29,6);
     //end string buffer with \0
     DdMmYy[6] = '\0';
@@ -337,7 +313,7 @@ GPSloc Sim7x00::GPSPositioning(){
     UTCTime[6] = '\0';
     printf("~sim> UTC time is %s\n",UTCTime);
     
-    //sendATcommand("AT+CGPS=0","OK:", 3000);*/
+    //sendATcommand("AT+CGPS=0","OK:", 3000);
     return GPSloc(Lat,Log,Speed);
 }
 

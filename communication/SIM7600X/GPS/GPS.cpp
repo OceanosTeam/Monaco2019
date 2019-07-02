@@ -37,8 +37,11 @@ int8_t answer;
 
 void reset() {
 	std::cout<<"RESETTING SIM7600 MODULE"<<std::endl;
-	sim7600.sendATcommand("AT+CFUN=6", "OK", 5000);
-	delay(15000);
+	sim7600.sendATcommand("AT+CRESET", "OK", 2000);
+	//sim7600.sendATcommand("AT+CFUN=7", "OK", 2000);
+	//delay(2000);
+	//sim7600.sendATcommand("AT+CFUN=6", "OK", 2000);
+	delay(10000);
 }
 
 void setup() {	
@@ -46,10 +49,9 @@ void setup() {
 	answer = sim7600.sendATcommand("AT+CPIN?", "+CPIN: SIM PIN", 2000);
 	if (answer == 1)
 	{
-		std::cout<<"~pi> INSERT PIN..."<<std::endl;
-		std::string SIM_PIN;
-		std::cin>>SIM_PIN;
-		sim7600.sendATcommand(("AT+CPIN="+SIM_PIN).c_str(),"OK", 1000);
+		std::cout<<"~pi> INSERTING STANDARD PIN..."<<std::endl;
+		std::string SIM_PIN = "0000";
+		sim7600.sendATcommand(("AT+CPIN="+SIM_PIN).c_str(),"OK", 2000);
 	}
 	else
 	{
@@ -59,12 +61,13 @@ void setup() {
 	if (answer == 0)
 	{
 		std::cout<<"~pi> INITIALIZING GPS SESSION"<<std::endl;
-		sim7600.sendATcommand("AT+CGPS=1,1", "OK:", 1000);
+		sim7600.sendATcommand("AT+CGPS=1,1", "OK:", 2000);
 	}
 	else
 	{
 		std::cout<<"~pi> GPS SESSION INITIALIZED"<<std::endl;
 	}
+	std::cout<<"~pi> RECEIVING GPS DATA EVERY 2 SECONDS"<<std::endl;
 	delay(3000);
 }
 
@@ -73,6 +76,7 @@ void loop() {
 
 int main() {
 	reset();
+	system("../GSM/wwan0.sh");
 	setup();
 	int signal_counter = 1;
 	while (1) {
@@ -93,8 +97,8 @@ int main() {
 		}
 		std::cout << std::string(12, '*')+"<"+std::to_string(signal_counter)+">"+std::string(12, '*') << std::endl;
 		std::cout << "" << std::endl;
-		delay(2000);
 		signal_counter++;
+		delay(2000);
 	}
 	sim7600.sendATcommand("AT+CGPS=0","OK:", 3000);
 	return (0);
