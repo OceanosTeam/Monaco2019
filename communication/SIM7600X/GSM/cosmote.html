@@ -1,0 +1,380 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:og="http://ogp.me/ns#"
+xmlns:fb="http://www.facebook.com/2008/fbml">
+	<head>
+	
+		<link rel="shortcut icon" href="./resources/prepaid/images/whatsup-favicon.ico?version=1.9&lgId=DC0C71" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=640">
+		<meta name="format-detection" content="telephone=no">
+
+		<title>COSMOTE My Internet</title>
+
+		<link href="./resources/prepaid/css/style.css?version=1.9&lgId=DC0C71" rel="stylesheet" type="text/css" />
+		<link href="./resources/prepaid/css/jquery.jscrollpane.css?version=1.9&lgId=DC0C71" rel="stylesheet" type="text/css" />
+	
+		<link href="./resources/prepaid/css/whatsup.css?version=1.9&lgId=DC0C71" rel="stylesheet" type="text/css" />
+		<link href="./resources/prepaid/css/mobile.css?version=1.9&lgId=DC0C71" rel="stylesheet" type="text/css" />
+		<link href="./resources/prepaid/css/custom.css?version=1.9&lgId=DC0C71" rel="stylesheet" type="text/css" />
+
+		<script src="./resources/prepaid/js/jquery-1.8.3.min.js?version=1.9&lgId=DC0C71"></script>
+		<script src="./resources/js/dlp.libraries.1.0.js?version=1.9&lgId=DC0C71"></script>
+		<script src="./resources/prepaid/js/dlp.prepaid.main.1.0.js?version=1.9&lgId=DC0C71"></script>
+		<script src="./resources/prepaid/js/jquery.easing.1.3.js?version=1.9&lgId=DC0C71"></script>
+		<script src="./resources/prepaid/js/jquery.backstretch.min.js?version=1.9&lgId=DC0C71"></script>
+		
+		<script src="./resources/prepaid/js/jquery.mousewheel.js?version=1.9&lgId=DC0C71"></script>
+		<script src="./resources/prepaid/js/mwheelIntent.js?version=1.9&lgId=DC0C71"></script>
+		<script src="./resources/prepaid/js/jquery.jscrollpane.min.js?version=1.9&lgId=DC0C71"></script>
+		<script src="./resources/prepaid/js/main.js?version=1.9&lgId=DC0C71"></script>
+		<script src="./resources/js/deeplink.js"></script>
+
+		<script src="./resources/js/remote-logger.js"></script>
+		<script type="application/javascript">
+			LOGGER.init('306978080828','whats_up', 'myinternet','https://app.cosmote.gr/solr/{applicationId}/update/json/docs');
+			landing.prepaid.init(LOGGER.info);
+		</script>
+
+
+		
+
+
+
+
+
+<script type="text/javascript">
+          (function(i,s,o,g,r,a,m){
+               i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+               (i[r].q=i[r].q||[]).push(arguments)},
+				i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+           })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+           ga('create', 'UA-12449534-1', {cookieDomain :'none', allowLinker: true});
+           ga('require', 'displayfeatures');
+           ga('send', 'pageview'); 
+
+</script>
+
+
+	
+		
+		<script type="text/javascript">
+
+			Locale.insertKey('main.summer.offer.gift.text', 'Δώρο επιπλέον');	
+			Locale.insertKey('main.summer.offer.confirm.gift', 'Δώρο:');
+			Locale.insertKey('main.summer.offer.confirm.gift.text', 'Επιπλέον ');
+			
+			$(function() {
+
+
+                
+                landing.prepaid.variables.redirect = true;
+                
+
+				landing.prepaid.variables.rli = 'AXWYG';
+				landing.prepaid.variables.lgId = 'DC0C71';
+				landing.prepaid.variables.currentLayoutTemplate = landing.prepaid.constants.LAYOUTS.WHATSUP;
+				landing.prepaid.variables.summerOfferState = true;
+
+				landing.prepaid.getCustomerData.init();
+				landing.prepaid.checkFreshActionForPendingOrders.init();
+			});
+					
+		</script>
+
+	</head>
+	<body>
+	<form id="subform" action="submitService" method="post"  style="display:none">
+		<input type="hidden" id="id" name="id">
+		<input type="hidden" id="pt" name="pt">
+		<input type="hidden" id="rli" name="rli" value="AXWYG">
+	</form>
+	<form id="subformActivationDeactivation" action="submitService" method="post"  style="display:none">
+		<input type="hidden" name="deactivation" value="1">
+		<input type="hidden" id="rli" name="rli" value="AXWYG">
+	</form>
+		<div id="wrapper">
+
+			<div class="header">
+				<div class="hold">
+					<a class="logo"></a>
+					<a href="./main" class="refresh"></a>
+				</div>
+			</div>
+						
+			<div class="home-remain" >
+				<div class="hold">
+					<h2  class="customDisplayNone customRemainingDataMessageConsumed customRemainingDataMessageConsumedWhatsup">Δεν έχεις ΜΒ για σερφάρισμα</h2>
+					<h6 class="customRemainingDataNotConsumed">Για σερφάρισμα έχεις:</h6>
+					<div class="mb-remain">
+						<h3 class="customClassTotalDataBalance"><span class="customClassTotalDataBalance"></span>30 GB</h3>
+						<h4>ΥΠΟΛΟΙΠΟ</h4>
+						<a href="#statistics-prepaid" class="view-statistics open-lightbox"><span>Αναλυτικά</span></a>
+						<div class="last-update">
+							Τελευταία ενημέρωση: <span class="customClassAvailableMBsLastUpdateDate"></span>
+						</div>
+					</div>
+				</div>
+				<div class="ammount-remain">
+					<div class="line"></div>
+						<div class="hold">
+							<h4>ΧΡΗΜΑΤΙΚΟ ΥΠΟΛΟΙΠΟ <span class="customClassBalanceRemaining"></span></span></h4>
+							<h5 class="customClassBalanceRemainingExpirationDate">Διαθέσιμο έως, </h5>
+						</div>
+					<div class="line"></div>
+				</div>
+			</div>
+			
+			<div class="home-links">
+				<div class="hold">
+					
+					<div class="more-hold">
+					
+						<div class="more-links">
+							
+							<!-- passes will append -->
+
+						</div>
+						<div class="more-title">
+							<table cellpadding="0" cellspacing="0" height="100%">
+								<tr>
+									<td valign="middle">
+									<span class="customeClassSideMessageNoMBs">Για να ξεκινήσεις το σερφάρισμα ενεργοποίησε εδώ το πακέτο που θέλεις:</span>
+										<!--span class="customeClassSideMessageNoMBs">Για να σερφάρεις στο Internet ενεργοποίησε εδώ το πακέτο που σου ταιριάζει:</span-->
+										<span class="customeClassSideMessageAvailableMBs customDisplayNone">Για περισσότερο σερφάρισμα ενεργοποίησε εδώ το πακέτο που θέλεις:</span>
+									</td>
+								</tr>
+							</table>
+							
+						</div>
+						<div class="clear"></div>
+					</div>
+					
+					
+					
+				</div>
+			</div>
+			
+			<div class="footer">
+				<div class="hold">
+					<a href="#terms" class="terms open-lightbox">Όροι &amp; Προϋποθέσεις > </a>
+					<a href="#deactivate" class="disable-service open-lightbox customClassDeactivationPopUpButton">Απενεργοποίηση υπηρεσίας > </a>
+				</div>
+			</div>
+			
+		</div>
+		
+		
+		<div class="lightbox" id="select-package">
+			<div class="content">
+				
+				<h2>Έχεις επιλέξει το πακέτο</h2>
+				<h3>INTERNET MONTHLY PASS 60MB</h3>
+				<h4>Περιγραφή Πακέτου</h4>
+				<div class="package-details">
+					<div class="row">
+						<div class="col l">Internet:</div>
+						<div class="col r">60ΜΒ</div>
+					</div>
+					<div class="clear"></div>
+					<div class="row">
+						<div class="col l">Χρέωση:</div>
+						<div class="col r">3,00&euro;</div>
+					</div>
+					<div class="clear"></div>
+					<div class="row">
+						<div class="col l">Διάρκεια:</div>
+						<div class="col r">31 ημέρες</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<a href="whatsup-thank.html" class="submit">Επιβεβαίωση</a>
+				<a class="cancel customClassAddCursorPointer">Ακύρωση ></a>
+			</div>
+		</div>
+		
+		
+		<div class="lightbox" id="package-confirm">
+			<div class="content">
+				<!--
+					<h2>Σας ευχαριστούμε πολύ.</h2>
+				<h3>Η αγορά του πακέτου<br/>EXTRA 200ΜΒ<br/>ολοκληρώθηκε.</h3>
+				<a class="cancel customClassAddCursorPointer">Αρχική σελίδα ></a>
+				-->
+			</div>
+		</div>
+		
+		
+		<div class="lightbox" id="terms">
+			<div class="content">
+				<h2>ΟΡΟΙ &amp; ΠΡΟΥΠΟΘΕΣΕΙΣ</h2>
+
+					<!-- insert documentum content here  -->
+					﻿				<div class="text scroll-content">					
+						<div class="q">COSMOTE My Internet</div>
+						<div class="ans">H COSMOTE δημιούργησε τη νέα υπηρεσία <strong>COSMOTE My Internet</strong> (εφεξής «Υπηρεσία») με σκοπό  την κατά το δυνατόν αμεσότερη πληροφόρηση του συνδρομητή αναφορικά με τη χρήση  υπηρεσιών δεδομένων μέσω της σύνδεσης του.</div>
+						<div class="q">Προϋποθέσεις Παροχής Υπηρεσίας</div>
+						<div class="ans">
+						  <p>Η Υπηρεσία &nbsp;είναι διαθέσιμη στους  συνδρομητές Οικιακών/Εταιρικών προγραμμάτων Συμβολαίου  &amp; Mobile Internet, ΚαρτοΣυμβολαίου, COSMOTE Business Mobile Cost Control και Καρτοκινητής εξαιρουμένων  των προγραμμάτων My Way, COSMOTE  Mobile i-Data, Mobile Internet Unlimited, COSMOTE  Mobile Internet 2OGB, COSMOTE-i, COSMOTE Internet of things.  <br />
+						    Η Υπηρεσία  παρέχει ενημέρωση  για την κατανάλωση της ενσωματωμένης χρήσης των δεδομένων του προγράμματος και  τυχόν πρόσθετων πακέτων δεδομένων, καθώς και τη δυνατότητα αγοράς πρόσθετων  πακέτων δεδομένων, ενώ στους  συνδρομητές  Καρτοσυμβολαίου, COSMOTE Business Mobile Cost Control και Καρτοκινητής  παρέχεται επίσης  ενημέρωση  για το διαθέσιμο χρηματικό υπόλοιπο των  προγραμμάτων τους. <br />
+						    Η COSMOTE δύναται  να τροποποιεί τα προγράμματα στα οποία  παρέχεται η Υπηρεσία. Η τροποποίηση αυτή θα ισχύει με την αλλαγή των παρόντων  όρων.  Οι Συνδρομητές μπορούν να  ενημερώνονται για τα προγράμματα στα οποία παρέχεται η Υπηρεσία από την  ιστοσελίδα www.cosmote.gr, το δίκτυο πωλήσεων και την Εξυπηρέτηση Πελατών της COSMOTE.<br />
+                            						    Από τις 23/4/2015 για τους συνδρομητές Οικιακών  και Εταιρικών προγραμμάτων φωνής και Mobile Internet και από τις 04/07/2016 για τους συνδρομητές Καρτοσυμβολαίου,  COSMOTE Business Mobile Cost Control και Καρτοκινητής, η Υπηρεσία θα  παρέχεται ενεργοποιημένη για νέες συνδέσεις με δυνατότητα απενεργοποίησής της από  τους  συνδρομητές. Η δυνατότητα χρήσης της Υπηρεσίας παρέχεται μόνο εντός Ελλάδας. <br />
+						    Οι συνδρομητές  Οικιακών και Εταιρικών Προγραμμάτων μπορούν να ενεργοποιήσουν/απενεργοποιήσουν  την Υπηρεσία με αίτημα στην Εξυπηρέτηση Πελατών της COSMOTE, στο δίκτυο  καταστημάτων COSMOTE, αλλά και ηλεκτρονικά μέσω της ειδικής ιστοσελίδας της  Υπηρεσίας, της ιστοσελίδας του My COSMOTE και της εφαρμογής My COSMOTE App. Oι συνδρομητές  οικιακών προγραμμάτων συμβολαίου, ΚαρτοΣυμβολαίου και  Καρτοκινητής μπορούν να ενεργοποιήσουν την Υπηρεσία με αποστολή δωρεάν SMS με το λεκτικό «ΜΙ» στο 1333. Επίσης, οι  συνδρομητές οικιακών προγραμμάτων συμβολαίου μπορούν να ενεργοποιήσουν την  Υπηρεσία με κλήση στο 1250, οι   συνδρομητές ΚαρτοΣυμβολαίου και οι συνδρομητές  Καρτοκινητής με κλήση στο 1330. <br />
+						    Οι συνδρομητές Εταιρικών  προγραμμάτων συμβολαίου φωνής και Mobile Internet μπορούν να επιλέξουν να λαμβάνουν την  Υπηρεσία σε περιορισμένη μορφή, δηλαδή να λαμβάνουν μόνο ενημέρωση για την  ενσωματωμένη χρήση του Προγράμματος ή/και των τυχόν πρόσθετων πακέτων  δεδομένων. Σε περίπτωση αιτήματος της  αλλαγής της μορφής της υπηρεσίας κατά τη διάρκεια του τιμολογιακού κύκλου, η  νέα μορφή της υπηρεσίας θα ισχύσει με την έναρξη  του νέου τιμολογιακού κύκλου. <br />
+						    Σε περίπτωση απενεργοποίησης της  Υπηρεσίας, η χρέωση μετά την κατανάλωση της ενσωματωμένης χρήσης των δεδομένων  του Προγράμματός του Συνδρομητή ή τυχόν πρόσθετων πακέτων δεδομένων θα γίνεται  σύμφωνα με τον εκάστοτε τιμοκατάλογο της COSMOTE. </p>
+                          <p>Στην περίπτωση αλλαγής Οικονομικού Προγράμματος ή  μεταβίβασης της σύνδεσης η Υπηρεσία θα παραμένει ενεργοποιημένη εφόσον  παρέχεται στο νέο Οικονομικό Πρόγραμμα. </p>
+</div>
+						<div class="q">Ιστοσελίδα της Υπηρεσίας</div>
+						<div class="ans">
+						  <p>Η πρόσβαση στην Υπηρεσία παρέχεται δωρεάν μέσω της ειδικής ιστοσελίδας  στη διεύθυνση http://myinternet.cosmote.gr και παρέχει  σε όλους τους συνδρομητές (Οικιακών και Εταιρικών προγραμμάτων Συμβολαίου,  Καρτοσυμβολαίου, COSMOTE Business Mobile Cost Control και Καρτοκινητής) που έχουν  ενεργοποιημένη την Υπηρεσία: <br />
+						&bull;Ενημέρωση για       το υπόλοιπο της διαθέσιμης χρήσης (ΜΒ). Η ενημέρωση παρέχεται       συγκεντρωτικά αλλά και αναλυτικά για κάθε ενεργή υπηρεσία δεδομένων στη       σύνδεση του συνδρομητή<br />
+						&bull;Ενημέρωση για       την ημερομηνία ανανέωσης τυχόν ενσωματωμένης χρήσης (ΜΒ) στη σύνδεση του<br />
+						&bull;Δυνατότητα ενεργοποίησης       πρόσθετου πακέτου δεδομένων όποτε το επιθυμεί ο συνδρομητής, με χρέωση στη       σύνδεση του, ώστε να συνεχίσει την πλοήγηση στο διαδίκτυο<br />
+						&bull;Δυνατότητα       ενημέρωσης για τις ισχύουσες χρεώσεις και τους παρόντες Όρους <br />
+						&bull;Δυνατότητα       απενεργοποίησης της Υπηρεσίας. Με την απενεργοποίηση της Υπηρεσίας η       χρέωση για χρήση δεδομένων θα γίνεται σύμφωνα με τον εκάστοτε τιμοκατάλογο       της COSMOTE.<br />
+						&bull;
+<br />Στους συνδρομητές Οικιακών και Εταιρικών προγραμμάτων Συμβολαίου: 
+<br />
+						&bull;Ενεργοποίηση       οποιουδήποτε «Πακέτου Mobile Internet», ή «Πακέτου Mobile Internet Day Pass»,       εφόσον η σύνδεση COSMOTE που έχει στην       κατοχή του ο συνδρομητής δεν παρέχει ενσωματωμένη χρήση δεδομένων (ΜΒ)<br />
+						&bull;Δυνατότητα       επιλογής χρέωσης των δεδομένων βάσει ογκοχρέωσης μέχρι τη λήξη της       τρέχουσας τιμολογιακής περιόδου. Σε αυτή την περίπτωση, θα ενημερώνεται με       γραπτό μήνυμα για κάθε δέκα (10) ευρώ χρέωσης δεδομένων με ανώτατο όριο       ενημέρωσης τα διακόσια (200) ευρώ. Μετά τη συμπλήρωση του άνω ποσού ο       συνδρομητής μπορεί να συνεχίσει να κάνει χρήση δεδομένων αλλά δεν θα λαμβάνει       καμία επιπλέον ενημέρωση.
+
+<br />Στους συνδρομητές Καρτοσυμβολαίου, COSMOTE Business Mobile Cost Control και Καρτοκινητής: <br />
+						&bull;Ενημέρωση για το διαθέσιμο χρηματικό υπόλοιπο <br />
+Ενημέρωση για την ημερομηνία  λήξης των πρόσθετων πακέτων δεδομένων που έχει ενεργοποιήσει ο συνδρομητής
+<br />Για τους συνδρομητές  που  έχουν ενεργή την Υπηρεσία και βρίσκονται στο εξωτερικό, ισχύουν τα ακόλουθα:<br />
+<br /><b>Συνδρομητές με ενεργή την Υπηρεσία My Internet και την υπηρεσία COSMOTE TRAVEL PASS. </b><br />
+	  Οι ανωτέρω συνδρομητές μπορούν να καταναλώσουν στο εξωτερικό μόνο την ενσωματωμένη χρήση δεδομένων του προγράμματος τους και όχι τυχόν ενεργοποιημένα πρόσθετα πακέτα ή υπηρεσίες δεδομένων. <br />
+	  Οι συνδρομητές θα ενημερώνονται μέσω της ιστοσελίδας της Υπηρεσίας για το συνολικό υπόλοιπο της διαθέσιμης χρήσης τους (ΜΒ) καθώς και αναλυτικά για κάθε ενεργή υπηρεσία δεδομένων της σύνδεσής τους. <br />
+	  <br />
+	  Μέσω  της ιστοσελίδας της Υπηρεσίας οι συνδρομητές θα ενημερώνονται: <br />
+<br />
+						&bull;Ότι μέσω  της υπηρεσίας COSMOTE Travel Pass μπορεί  να καταναλωθεί <strong>μόνο η ενσωματωμένη χρήση του προγράμματος </strong>και όχι τα δεδομένα  (ΜΒ) από τυχόν ενεργοποιημένα πρόσθετα πακέτα Internet. <br />
+						&bull;Ότι μέσω   του link &ldquo;Αναλυτικά&rdquo; μπορούν να ενημερωθούν για την  κατανάλωση των δεδομένων του προγράμματος τους.<br />
+						&bull;Ότι κατά  την κατανάλωση της ενσωματωμένης χρήσης του προγράμματός τους θα λάβουν  ενημερωτικά μηνύματα μετά την κατανάλωση του  80% και του  100% αυτής. <br />
+						&bull;Ότι μετά  την κατανάλωση της ενσωματωμένης χρήσης του προγράμματός τους  για την  πρόσβαση στο Internet θα ισχύουν οι χρεώσεις περιαγωγής  της υπηρεσίας COSMOTE Travel Pass <br />
+						&bull; Ότι θα λαμβάνουν γραπτά μηνύματα για κάθε 10€  χρέωσης δεδομένων με ανώτατο όριο ενημέρωσης τα διακόσια (200) ευρώ, ακόμη και  στις χώρες που δεν ισχύει η υπηρεσία COSMOTE Travel Pass. <br />
+Ότι δεν είναι δυνατή η  αγορά πρόσθετων πακέτων ή υπηρεσιών δεδομένων.
+<br /><b> Συνδρομητές με ενεργή μόνο την Υπηρεσία My Internet. </b><br />
+  Οι συνδρομητές θα ενημερώνονται μέσω της ιστοσελίδας της Υπηρεσίας,  ότι δεν είναι δυνατή η χρήση της όσο βρίσκονται σε περιαγωγή. <br />
+Επιπλέον, οι συνδρομητές Οικιακών και Εταιρικών προγραμμάτων συμβολαίου  COSMOTE που δεν έχουν ενεργοποιήσει την υπηρεσία Travel &amp; Surf, θα λαμβάνουν γραπτά μηνύματα για κάθε  10€ χρέωσης δεδομένων με ανώτατο όριο  ενημέρωσης τα διακόσια (200) ευρώ. <br />
+&amp;Surf ισχύουν οι όροι και οι προϋποθέσεις της εν λόγω  υπηρεσίας. </div>
+						<div class="q">Χρήση της Υπηρεσίας  </div>
+						<div class="ans">
+						  <p>Μετά την ενεργοποίηση της Υπηρεσίας και εφόσον έχει καταναλωθεί η  ενσωματωμένη χρήση δεδομένων (ΜΒ) του προγράμματος ή της πρόσθετης υπηρεσίας  δεδομένων, διακόπτεται αυτόματα η πρόσβαση της σύνδεσης στο διαδίκτυο μέχρι το  τέλος της τρέχουσας τιμολογιακής περιόδου χωρίς περαιτέρω  χρέωση του συνδρομητή.<br />
+						    Εφόσον ο συνδρομητής προσπαθήσει να πλοηγηθεί στο διαδίκτυο, μέσω  του δικτύου της COSMOTE  ανακατευθύνεται αυτόματα στην ιστοσελίδα της Υπηρεσίας και ενημερώνεται ότι  έχει καταναλωθεί η δωρεάν ενσωματωμένη χρήση του προγράμματός του ή ή/και των  τυχόν πρόσθετων πακέτων δεδομένων. <br />
+						    Ο συνδρομητής για να συνεχίσει να έχει πρόσβαση στο διαδίκτυο μπορεί  να ενεργοποιήσει μια από τις διαθέσιμες επιλογές που εμφανίζονται στη σελίδα  της υπηρεσίας. <br />
+						    Για τους συνδρομητές Οικιακών και Εταιρικών προγραμμάτων συμβολαίου  COSMOTE με την ενεργοποίηση της Υπηρεσίας ενεργοποιείται αυτόματα και η  υπηρεσία  COST CONTROL με την οποία ο  συνδρομητής λαμβάνει δωρεάν ενημερωτικά  γραπτά μηνύματα (SMS) όταν  καταναλώσει  το 80% και το 100% της  ενσωματωμένης χρήσης δεδομένων του προγράμματος ή της πρόσθετης υπηρεσίας  δεδομένων που έχει ενεργοποιημένη στη σύνδεση του. Η υπηρεσία COST CONTROL παραμένει  ενεργοποιημένη και μετά την απενεργοποίηση της Υπηρεσίας στους συνδρομητές  Οικιακών προγραμμάτων φωνής και Mobile Internet, ενώ οι συνδρομητές Εταιρικών  προγραμμάτων φωνής και Mobile Internet θα  πρέπει να επιλέξουν τη διατήρηση ή απενεργοποίηση της. <br />
+						    Οι συνδρομητές Καρτοσυμβολαίου, COSMOTE Business Mobile Cost Control και Καρτοκινητής  ενημερώνονται με γραπτά μηνύματα (SMS), όταν έχουν  ακόμα διαθέσιμα  10 MB και στο  100% της ενσωματωμένης χρήσης ή του πρόσθετου πακέτου δεδομένων. Επιπλέον  ενημερώνονται 1 μέρα πριν και στη λήξη τυχόν πρόσθετου πακέτου δεδομένων.<br />
+						    Σε όλα τα μηνύματα περιλαμβάνεται και σύνδεση (link) για πρόσβαση στην ειδική  ιστοσελίδα της Υπηρεσίας. </p>
+                          <p>Η ενημέρωση με γραπτά μηνύματα στο 80% και στο 100%, μέσω της  υπηρεσίας COST CONTROL, καθώς και  όταν απομένουν 10 MB και στο 100% της ενσωματωμένης χρήσης ή του  πρόσθετου πακέτου δεδομένων για τους συνδρομητές Καρτοσυμβολαίου, COSMOTE Business Mobile Cost Control και  Καρτοκινητής ενδέχεται να παρέχεται με μικρή καθυστέρηση ανάλογα με την  ενημέρωση των συστημάτων της COSMOTE. <br />
+                            Τα ενημερωτικά μηνύματα που αφορούν την κατανάλωση της  ενσωματωμένης χρήσης ή των πρόσθετων πακέτων δεδομένων θα αποστέλλονται όλο το  24ώρο. Διευκρινίζεται ότι σε συσκευές τύπου Smart Phone τα ενημερωτικά μηνύματα ενδέχεται  να σταλούν κατά την ημερομηνία και ώρα της αυτόματης σύνδεσης των τυχόν  εγκατεστημένων  εφαρμογών   (όπως καιρός, νέα, e-mail κ.α.) στις ανωτέρω συσκευές. <br />
+                            Τα ενημερωτικά μηνύματα που στέλνονται 1 μέρα πριν και στη λήξη  των πρόσθετων πακέτων για τους συνδρομητές Καρτοσυμβολαίου, COSMOTE Business Mobile Cost Control και  Καρτοκινητής, δεν αποστέλλονται κατά το χρονικό διάστημα 23:00 – 07:00. </p>
+                          <p>Στη περίπτωση συνδρομητών με πρόγραμμα χωρίς ενσωματωμένη χρήση  δεδομένων ή ενεργή πρόσθετη υπηρεσία δεδομένων, εφόσον ο συνδρομητής  προσπαθήσει να πλοηγηθεί στο διαδίκτυο, μέσω του δικτύου  της COSMOTE θα  ανακατευθύνεται αυτόματα στην ιστοσελίδα της Υπηρεσίας και θα ενημερώνεται ότι  δεν έχει διαθέσιμα ΜΒ για πρόσβαση στο διαδίκτυο. Ο συνδρομητής για να αποκτήσει  πρόσβαση στο διαδίκτυο θα πρέπει  να  επιλέξει την ενεργοποίηση πρόσθετου πακέτου δεδομένων μέσω της Υπηρεσίας.<br />
+                            Διευκρινίζεται επίσης, ότι εφόσον ο συνδρομητής πλοηγείται σε  σελίδες με το πρωτόκολλο ασφαλείας https ή κάνει  χρήση internet applications ή video/audio streaming, η COSMOTE δεν έχει την τεχνική δυνατότητα  να τον ανακατευθύνει αυτόματα στην ιστοσελίδα της Υπηρεσίας μετά την κατανάλωση  της ενσωματωμένης χρήσης δεδομένων. <br />
+                            Στην περίπτωση  αυτή ωστόσο, μετά την κατανάλωση της ενσωματωμένης χρήσης δεδομένων θα γίνεται  αυτόματη διακοπή της πρόσβασης της σύνδεσής του στο διαδίκτυο και ο συνδρομητής  θα λαμβάνει γραπτό μήνυμα που περιέχει και σύνδεση (link) για πρόσβαση  στην ειδική ιστοσελίδα της Υπηρεσίας. <br />
+                            Για τους συνδρομητές Καρτοσυμβολαίου, COSMOTE Business Mobile Cost Control και Καρτοκινητής που έχουν ενεργοποιημένη την υπηρεσία Mobile Internet day-pass και ενεργοποιήσουν την Υπηρεσία My Internet, απενεργοποιείται αυτόματα η υπηρεσία Mobile Internet day-pass και στους ανωτέρω συνδρομητές ενεργοποιείται αυτόματα το Ημερήσιο πακέτο Mobile Internet 60MB. Η πρώτη χρήση του Ημερήσιου πακέτου  Mobile Internet 60MB είναι δωρεάν.
+Σε περίπτωση απενεργοποίησης της Υπηρεσίας COSMOTE My Internet ενεργοποιείται και πάλι η υπηρεσία Mobile Internet day-pass εφόσον ο συνδρομητής δεν έχει στο πρόγραμμά του ενσωματωμένη χρήση δεδομένων ή ενεργοποιημένο κάποιο πακέτο για χρήση δεδομένων.
+<br/>
+                            Δείτε στην  ιστοσελίδα της Υπηρεσίας στο www.cosmote.gr αναλυτικές πληροφορίες για  τις επιλογές χρήσης δεδομένων, που παρέχονται ανά περίπτωση για συνδρομητές Οικιακών/Εταιρικών  προγραμμάτων Συμβολαίου &amp; Mobile Internet,  ΚαρτοΣυμβολαίου, COSMOTE Business Mobile Cost Control και Καρτοκινητής στην Υπηρεσία. </p>
+							<p>Στις τιμές των πακέτων προγραμμάτων Οικιακού & Εταιρικού Συμβολαίου,  στην επιλογή χρέωσης ανά ΜΒ και στα πακέτα ΚαρτοΣυμβολαίου GIGA NOW Month και Extra 2GB περιλαμβάνεται ΦΠΑ 24% και εφαρμόζεται στο λογαριασμό το αναλογούν τέλος συνδρομητών κινητής τηλεφωνίας. 
+Το τέλος συνδρομητών κινητής τηλεφωνίας ανά σύνδεση κινητής για μηνιαίο λογαριασμό (προ ΦΠΑ) είναι: 12% μέχρι 50€, 15% από 50,01€ μέχρι 100€, 18% από 100,01€ μέχρι 150€ και 20% από 150,01€ και άνω. 
+Ο μηνιαίος λογαριασμός για κάθε σύνδεση κινητής τηλεφωνίας επιβαρύνεται με υψηλότερο Τέλος Συνδρομητών Κινητής Τηλεφωνίας εάν το ύψος του (προ ΦΠΑ) ανέλθει σε κλίμακα στην οποία εφαρμόζεται υψηλότερο τέλος.
+</p>
+<p>
+Στις τιμές των λοιπών πακέτων Οικιακού ΚαρτοΣυμβολαίου περιλαμβάνεται ΦΠΑ 24% και στις αγορές μέσω λογαριασμού εφαρμόζεται στο λογαριασμό τέλος καρτοκινητής 12%. 
+Στα προγράμματα COSMOTE Mobile Internet δεν επιβάλλεται Τέλος Συνδρομητών Κινητής Τηλεφωνίας επί του παγίου και της χρήσης Internet. Για τα συγκεκριμένα προγράμματα το Τέλος Συνδρομητών Κινητής Τηλεφωνίας θα επιβάλλεται μόνο στις περιπτώσεις που γίνει χρήση των υπηρεσιών SMS, GPRS WAP, DATA/FAX καθώς και υπηρεσιών πολυμεσικής πληροφόρησης. Εξαιρούνται τα προγράμματα COSMOTE Mobile Internet AnyWay στα οποία επιβάλλεται Τέλος Συνδρομητών Κινητής Τηλεφωνίας επί του παγίου και της χρήσης Internet.
+</p>
+						</div>
+						
+
+ </div>
+
+				<a class="cancel customClassAddCursorPointer">Κλείσιμο</a>
+			</div>
+		</div>
+		
+		<div class="lightbox" id="faq">
+			<div class="content">
+				<h2>ΣΥΧΝΕΣ ΕΡΩΤΗΣΕΙΣ</h2>
+
+					<!-- insert documentum content here  -->
+					
+
+				<a class="cancel customClassAddCursorPointer">Κλείσιμο</a>
+			</div>
+		</div>
+		
+		
+		
+		
+		<div class="lightbox" id="statistics-prepaid">
+			<div class="content">
+				<h2>Τα ΜΒ σου αναλυτικά</h2> 
+				
+				<div class="scroll-area">
+				</div>
+				
+				<a class="cancel customClassAddCursorPointer ">Κλείσιμο</a>
+			</div>
+		</div>
+		
+		
+		
+		<div class="lightbox" id="deactivate">
+			<div class="content customClassDeactivateDlpDayPassChargeMessage customDisplayNone">
+				<div class="deactivation-icon"></div>
+				<h2>Έχεις επιλέξει να απενεργοποιήσεις την Υπηρεσία My Internet</h2>
+				<h3>Μετά την απενεργοποίηση, όταν σου τελειώνουν τα MB, το σερφάρισμα δεν θα  κόβεται και θα χρεώνεσαι με βάση τη χρήση σου μέχρι να λήξει το πακέτο.
+				 Αν δεν έχεις ενεργό πακέτο Internet, η χρέωση θα γίνεται αυτόματα με την υπηρεσία Internet Day Pass (<span class="customClassDeactivateDlpCharge"></span>&euro;/24 ώρες)</h3>
+				<a class="submit customClassDeactivationButton customClassAddCursorPointer">Επιβεβαίωση</a>
+				<a class="cancel customClassAddCursorPointer">Ακύρωση ></a>
+			</div>
+			<div class="content customClassDeactivateDlpRorChargeMessage">
+				<div class="deactivation-icon"></div>
+				<h2>‘Εχεις επιλέξει την απενεργοποίηση της υπηρεσίας COSMOTE My Internet</h2>
+				<h3>Μετά την απενεργοποίηση εφόσον εξαντληθούν τα διαθέσιμα δωρεάν MB θα ισχύει χρέωση βάσει των MB που καταναλώνετε.</h3>
+				<h4 class="customDisplayNone customClassDeactivateDlpChargeHeader">Χρέωση: <span class="customClassDeactivateDlpCharge customDisplayNone"></span></h4>
+				<a class="submit customClassDeactivationButton customClassAddCursorPointer">Επιβεβαίωση</a>
+				<a class="cancel customClassAddCursorPointer">Ακύρωση ></a>
+			</div>
+		</div>
+		
+		<div class="lightbox customClassWarning customClassWarningWhatsUp customClassPendingRequest">
+			<div class="content">
+				<div class="deactivation-icon"></div>
+				<h2>Ενημέρωση</h2>
+				<h3>Σε ενημερώνουμε ότι υπάρχει <br/> προηγούμενο αίτημά σε εξέλιξη. <br/>Θα ενημερωθείς για την εξέλιξη του αιτήματός σου με γραπτό μήνυμα</h3>
+				<a class="cancel customClassAddCursorPointer">Επιστροφή</a>
+			</div>
+		</div>
+		
+		<div class="lightbox customClassWarning customClassWarningWhatsUp customClassErrorOccurred">
+			<div class="content">
+				<div class="deactivation-icon"></div>
+				<h2>Ενημέρωση</h2>
+				<h3>Σε ενημερώνουμε ότι η υπηρεσία <br/> αυτή τη στιγμή δεν είναι διαθέσιμη
+Για περισσότερες πληροφορίες κάλεσε <br/>την Εξυπηρέτηση Πελατών - 13888</h3>
+				<a href="./main" class="cancel customClassCancelPureLink customClassAddCursorPointer">Επιστροφή</a>
+			</div>
+		</div>
+
+
+		<script type="application/javascript">
+			LOGGER.info('Main page loaded');
+		</script>
+
+    
+        <script type="application/javascript">
+            LOGGER.info('Main page loaded - attempting automatic deep link invocation');
+        </script>
+        <div id="dsadsdsadasdasdsa" style="display:none">
+            <a href="#"  class="thisisadummyclass">One App</a>
+        </div>
+
+    
+
+   		<iframe id="googleAnalytics_iframe" src="./empty" style="display:none;" ></iframe>
+
+	</body>
+</html>
